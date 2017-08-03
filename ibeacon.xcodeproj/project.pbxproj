@@ -110,7 +110,7 @@
 				TargetAttributes = {
 					1F7B06761E1306D400ADF3E5 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 9J6TJ3YPM7;
+						DevelopmentTeam = BJE27J35HP;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -278,11 +278,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9J6TJ3YPM7;
+				DEVELOPMENT_TEAM = BJE27J35HP;
 				INFOPLIST_FILE = ibeacon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = UT.ibeacon;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ibeacon.andrei;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -291,11 +291,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 9J6TJ3YPM7;
+				DEVELOPMENT_TEAM = BJE27J35HP;
 				INFOPLIST_FILE = ibeacon/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = UT.ibeacon;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ibeacon.andrei;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

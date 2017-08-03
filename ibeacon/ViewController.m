@@ -20,6 +20,7 @@
 @implementation ViewController{
     CLBeaconRegion * _region;
     CLLocationManager * _locMan;
+    NSMutableDictionary<NSString *, CLBeacon *> *_beaconDictionary;
 }
 
 - (void)viewDidLoad {
@@ -28,6 +29,7 @@
     _locMan=[[CLLocationManager alloc]init];
     _locMan.delegate=self;
     [_locMan requestAlwaysAuthorization];
+    _beaconDictionary = [[NSMutableDictionary alloc] init];
     [self startMonitoring];
     UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
 
@@ -80,25 +82,35 @@
 - (void)locationManager:(CLLocationManager *)manager
         didRangeBeacons:(NSArray<CLBeacon *> *)beacons inRegion:(CLBeaconRegion *)region{
     NSLog(@"didRangeBeacons %lu", (unsigned long)beacons.count);
+    NSLog(@"Array of beacons: %@", beacons);
+    for (CLBeacon *beacon in beacons) {
+        NSString *beaconID = [NSString stringWithFormat:@"%@-%@", beacon.major, beacon.minor];
+        NSLog(@"Beacon identified: %@", beaconID);
+        
+        if (_beaconDictionary[beaconID]) {
+            
+        } else if (!_beaconDictionary[beaconID]) {
+            [self sendLocalNotification:@"Sighted Beacon"
+                                message:[NSString stringWithFormat:@"Beacon ID: %@", beaconID]
+                             identifier:@"BeaconSighting"];
+            
+            _beaconDictionary[beaconID] = beacon;
+        }
+    }
 }
 
 - (void)locationManager:(CLLocationManager *)manager
       didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region{
 
     NSLog(@"didDetermineState %@, %li", region.identifier, (long)state);
-    [self sendLocalNotification:@"didDetermineState"
-                        message:[NSString stringWithFormat:@"%@, state=%li", region.identifier, (long)state]
-                     identifier:@"didDetermineState"];
 }
 
 - (void)locationManager:(CLLocationManager *)manager
          didEnterRegion:(CLRegion *)region{
+    
 
     NSLog(@"didEnterRegion %@", region.identifier);
-    [self sendLocalNotification:@"didEnterRegion"
-                        message:[NSString stringWithFormat:@"%@", region.identifier]
-                     identifier:@"didEnterRegion"];
-      [_locMan startRangingBeaconsInRegion:(CLBeaconRegion*)region];
+    [_locMan startRangingBeaconsInRegion:(CLBeaconRegion*)region];
 
 }
 
@@ -106,10 +118,6 @@
           didExitRegion:(CLRegion *)region{
 
     NSLog(@"didExitRegion %@", region.identifier);
-
-    [self sendLocalNotification:@"didExitRegion"
-                        message:[NSString stringWithFormat:@"%@", region.identifier]
-                     identifier:@"didExitRegion"];
     [_locMan stopRangingBeaconsInRegion:(CLBeaconRegion*)region];
 
 }
