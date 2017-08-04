@@ -92,7 +92,7 @@
         } else if (!_beaconDictionary[beaconID]) {
             [self sendLocalNotification:@"Sighted Beacon"
                                 message:[NSString stringWithFormat:@"Beacon ID: %@", beaconID]
-                             identifier:@"BeaconSighting"];
+                             identifier:beaconID];
             
             _beaconDictionary[beaconID] = beacon;
         }
