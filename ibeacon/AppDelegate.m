@@ -13,23 +13,29 @@
 
 @end
 
-@implementation AppDelegate
+@implementation AppDelegate{
+    NSTimer * updateTimer;
+    UIBackgroundTaskIdentifier myBackgroundTask;
+    NSDecimalNumber * previous;
+    NSDecimalNumber * current;
+    NSUInteger position;
+}
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-
+    myBackgroundTask = UIBackgroundTaskInvalid;
     return YES;
 }
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+
 }
 
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
       //  NSLog(@"applicationDidEnterBackground");
+ //   [self startBackgroundTasks];
 }
 
 
@@ -40,11 +46,69 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+  //  [self stopBackgroundTasks];
 }
 
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - background task
+
+-(void)startBackgroundTask{
+    [self resetCalculation];
+    updateTimer =[NSTimer scheduledTimerWithTimeInterval:0.5
+                                                  target:self
+                                                selector:@selector(calculateNextNumber)
+                                                userInfo:nil
+                                                 repeats:true];
+    [self registerBackgroundTask];
+}
+
+-(void)stopBackgroundTask{
+    [updateTimer invalidate];
+    updateTimer = nil;
+
+    if (myBackgroundTask != UIBackgroundTaskInvalid) {
+        [self endBackgroundTask];
+    }
+}
+
+-(void)resetCalculation{
+    previous = NSDecimalNumber.one;
+    current = NSDecimalNumber.one;
+    position = 1;
+
+}
+
+-(void)calculateNextNumber{
+
+    NSLog(@"backgroundTimeRemaining %f ", [[UIApplication sharedApplication] backgroundTimeRemaining]);
+   NSDecimalNumber * number =  [current decimalNumberByAdding:previous];
+    NSDecimalNumber * bigNumber = [NSDecimalNumber decimalNumberWithMantissa:1
+                                                                    exponent:40
+                                                                  isNegative:false];
+    if ([number compare:bigNumber] == NSOrderedAscending) {
+        previous = current;
+        current = number;
+        position+=1;
+    } else {
+        [self resetCalculation];
+    }
+
+}
+-(void)registerBackgroundTask{
+    myBackgroundTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+        [self endBackgroundTask];
+    }];
+
+}
+
+-(void)endBackgroundTask{
+    [UIApplication.sharedApplication endBackgroundTask:myBackgroundTask];
+    myBackgroundTask = UIBackgroundTaskInvalid ;
+
 }
 
 

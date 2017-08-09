@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "AppDelegate.h"
 
 @import CoreLocation;
 @import UserNotifications;
@@ -21,6 +22,7 @@
     CLBeaconRegion * _region;
     CLLocationManager * _locMan;
     NSMutableDictionary<NSString *, CLBeacon *> *_beaconDictionary;
+    NSTimer * timer;
 }
 
 - (void)viewDidLoad {
@@ -54,7 +56,9 @@
     _region.notifyOnEntry=YES;
     _region.notifyOnExit=YES;
     _region.notifyEntryStateOnDisplay=YES;
+
     [_locMan startMonitoringForRegion:_region];
+     [_locMan startRangingBeaconsInRegion:_region];
 
 }
 
@@ -83,33 +87,37 @@
         didRangeBeacons:(NSArray<CLBeacon *> *)beacons inRegion:(CLBeaconRegion *)region{
     NSLog(@"didRangeBeacons %lu", (unsigned long)beacons.count);
     NSLog(@"Array of beacons: %@", beacons);
-    for (CLBeacon *beacon in beacons) {
-        NSString *beaconID = [NSString stringWithFormat:@"%@-%@", beacon.major, beacon.minor];
-        NSLog(@"Beacon identified: %@", beaconID);
-        
-        if (_beaconDictionary[beaconID]) {
-            
-        } else if (!_beaconDictionary[beaconID]) {
-            [self sendLocalNotification:@"Sighted Beacon"
-                                message:[NSString stringWithFormat:@"Beacon ID: %@", beaconID]
-                             identifier:beaconID];
-            
-            _beaconDictionary[beaconID] = beacon;
+        for (CLBeacon *beacon in beacons) {
+            NSString *beaconID = [NSString stringWithFormat:@"%@-%@", beacon.major, beacon.minor];
+            NSLog(@"Beacon identified: %@", beaconID);
+                if (_beaconDictionary[beaconID]) {
+                } else if (!_beaconDictionary[beaconID]) {
+                    [self sendLocalNotification:@"Sighted Beacon"
+                                        message:[NSString stringWithFormat:@"Beacon ID: %@", beaconID]
+                                     identifier:beaconID];
+                    _beaconDictionary[beaconID] = beacon;
+                }
         }
-    }
+
 }
 
 - (void)locationManager:(CLLocationManager *)manager
       didDetermineState:(CLRegionState)state forRegion:(CLRegion *)region{
 
     NSLog(@"didDetermineState %@, %li", region.identifier, (long)state);
+      [_locMan startRangingBeaconsInRegion:_region];
 }
 
 - (void)locationManager:(CLLocationManager *)manager
          didEnterRegion:(CLRegion *)region{
-    
 
     NSLog(@"didEnterRegion %@", region.identifier);
+    
+    UIApplicationState state =[[UIApplication sharedApplication] applicationState];
+    if (state == UIApplicationStateBackground) {
+        AppDelegate * app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+        [app startBackgroundTask];
+    }
     [_locMan startRangingBeaconsInRegion:(CLBeaconRegion*)region];
 
 }
@@ -118,7 +126,8 @@
           didExitRegion:(CLRegion *)region{
 
     NSLog(@"didExitRegion %@", region.identifier);
-    [_locMan stopRangingBeaconsInRegion:(CLBeaconRegion*)region];
+    AppDelegate * app = (AppDelegate*)[[UIApplication sharedApplication] delegate];
+    [app startBackgroundTask];
 
 }
 
