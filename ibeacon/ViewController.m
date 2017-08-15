@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "AppDelegate.h"
+#import <Lottie/Lottie.h>
 
 @import CoreLocation;
 @import UserNotifications;
@@ -27,6 +28,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    LOTAnimationView *animation = [LOTAnimationView animationNamed:@"Beacon.json"];
+    animation.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    animation.center = self.view.center;
+    [self.view addSubview: animation];
+    [animation setLoopAnimation: true];
+    [animation play];
 
     _locMan=[[CLLocationManager alloc]init];
     _locMan.delegate=self;

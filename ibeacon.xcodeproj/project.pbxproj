@@ -13,6 +13,11 @@
 		1F7B06851E1306D400ADF3E5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F7B06831E1306D400ADF3E5 /* Main.storyboard */; };
 		1F7B06871E1306D400ADF3E5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F7B06861E1306D400ADF3E5 /* Assets.xcassets */; };
 		1F7B068A1E1306D400ADF3E5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F7B06881E1306D400ADF3E5 /* LaunchScreen.storyboard */; };
+		545E2CA91F43430C0071AD26 /* img_0.png in Resources */ = {isa = PBXBuildFile; fileRef = 545E2CA61F43430C0071AD26 /* img_0.png */; };
+		545E2CAA1F43430C0071AD26 /* img_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 545E2CA71F43430C0071AD26 /* img_1.png */; };
+		545E2CAB1F43430C0071AD26 /* img_2.png in Resources */ = {isa = PBXBuildFile; fileRef = 545E2CA81F43430C0071AD26 /* img_2.png */; };
+		545E2CAD1F4343340071AD26 /* Beacon.json in Resources */ = {isa = PBXBuildFile; fileRef = 545E2CAC1F4343340071AD26 /* Beacon.json */; };
+		78426611DE59FB33A2DDA607 /* libPods-ibeacon.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B52F2DD63FB1CBC4894E2B62 /* libPods-ibeacon.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +31,13 @@
 		1F7B06861E1306D400ADF3E5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1F7B06891E1306D400ADF3E5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F7B068B1E1306D400ADF3E5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		545E2CA61F43430C0071AD26 /* img_0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = img_0.png; path = "../../../Adobe/After Effects Animations/Beacon Animation/images/img_0.png"; sourceTree = "<group>"; };
+		545E2CA71F43430C0071AD26 /* img_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = img_1.png; path = "../../../Adobe/After Effects Animations/Beacon Animation/images/img_1.png"; sourceTree = "<group>"; };
+		545E2CA81F43430C0071AD26 /* img_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = img_2.png; path = "../../../Adobe/After Effects Animations/Beacon Animation/images/img_2.png"; sourceTree = "<group>"; };
+		545E2CAC1F4343340071AD26 /* Beacon.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = Beacon.json; path = "../../../Adobe/After Effects Animations/Beacon Animation/Beacon.json"; sourceTree = "<group>"; };
+		93E7FC76FBD350ADA203D9D4 /* Pods-ibeacon.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ibeacon.release.xcconfig"; path = "Pods/Target Support Files/Pods-ibeacon/Pods-ibeacon.release.xcconfig"; sourceTree = "<group>"; };
+		B52F2DD63FB1CBC4894E2B62 /* libPods-ibeacon.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ibeacon.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E186A201F11AFC131F3CFBCF /* Pods-ibeacon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ibeacon.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ibeacon/Pods-ibeacon.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				78426611DE59FB33A2DDA607 /* libPods-ibeacon.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +57,8 @@
 			children = (
 				1F7B06791E1306D400ADF3E5 /* ibeacon */,
 				1F7B06781E1306D400ADF3E5 /* Products */,
+				C60D08252369288AD21072D9 /* Pods */,
+				A631E3B6CCC1EA200B5BEA80 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +73,7 @@
 		1F7B06791E1306D400ADF3E5 /* ibeacon */ = {
 			isa = PBXGroup;
 			children = (
+				545E2CA31F4340EF0071AD26 /* Animation */,
 				1F7B067D1E1306D400ADF3E5 /* AppDelegate.h */,
 				1F7B067E1E1306D400ADF3E5 /* AppDelegate.m */,
 				1F7B06801E1306D400ADF3E5 /* ViewController.h */,
@@ -79,6 +95,34 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		545E2CA31F4340EF0071AD26 /* Animation */ = {
+			isa = PBXGroup;
+			children = (
+				545E2CAC1F4343340071AD26 /* Beacon.json */,
+				545E2CA61F43430C0071AD26 /* img_0.png */,
+				545E2CA71F43430C0071AD26 /* img_1.png */,
+				545E2CA81F43430C0071AD26 /* img_2.png */,
+			);
+			name = Animation;
+			sourceTree = "<group>";
+		};
+		A631E3B6CCC1EA200B5BEA80 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B52F2DD63FB1CBC4894E2B62 /* libPods-ibeacon.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C60D08252369288AD21072D9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E186A201F11AFC131F3CFBCF /* Pods-ibeacon.debug.xcconfig */,
+				93E7FC76FBD350ADA203D9D4 /* Pods-ibeacon.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,9 +130,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 1F7B068E1E1306D400ADF3E5 /* Build configuration list for PBXNativeTarget "ibeacon" */;
 			buildPhases = (
+				8CCE9950AC2A7DC4175817AE /* [CP] Check Pods Manifest.lock */,
 				1F7B06731E1306D400ADF3E5 /* Sources */,
 				1F7B06741E1306D400ADF3E5 /* Frameworks */,
 				1F7B06751E1306D400ADF3E5 /* Resources */,
+				2DEC4B71EFF65B9610841EBE /* [CP] Embed Pods Frameworks */,
+				AE2A819CF28249C5FBD5574D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -143,13 +190,65 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				545E2CAD1F4343340071AD26 /* Beacon.json in Resources */,
+				545E2CA91F43430C0071AD26 /* img_0.png in Resources */,
 				1F7B068A1E1306D400ADF3E5 /* LaunchScreen.storyboard in Resources */,
 				1F7B06871E1306D400ADF3E5 /* Assets.xcassets in Resources */,
 				1F7B06851E1306D400ADF3E5 /* Main.storyboard in Resources */,
+				545E2CAB1F43430C0071AD26 /* img_2.png in Resources */,
+				545E2CAA1F43430C0071AD26 /* img_1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2DEC4B71EFF65B9610841EBE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ibeacon/Pods-ibeacon-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8CCE9950AC2A7DC4175817AE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AE2A819CF28249C5FBD5574D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ibeacon/Pods-ibeacon-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		1F7B06731E1306D400ADF3E5 /* Sources */ = {
@@ -276,6 +375,7 @@
 		};
 		1F7B068F1E1306D400ADF3E5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E186A201F11AFC131F3CFBCF /* Pods-ibeacon.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -291,6 +391,7 @@
 		};
 		1F7B06901E1306D400ADF3E5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 93E7FC76FBD350ADA203D9D4 /* Pods-ibeacon.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
