@@ -29,7 +29,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    LOTAnimationView *animation = [LOTAnimationView animationNamed:@"Beacon.json"];
+    LOTAnimationView *animation = [LOTAnimationView animationNamed:@"Beacon2.json"];
     animation.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     animation.center = self.view.center;
     [self.view addSubview: animation];
